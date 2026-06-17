@@ -23,6 +23,23 @@ class MovimientoSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 {'descripcion': 'La descripción solo es válida para movimientos de tipo FIADO.'}
             )
+
+        if tipo == Movimiento.PAGO:
+            cliente = attrs.get('cliente', getattr(self.instance, 'cliente', None))
+            monto = attrs.get('monto', getattr(self.instance, 'monto', None))
+            if cliente is not None and monto is not None:
+                movimientos = cliente.movimientos.exclude(pk=getattr(self.instance, 'pk', None))
+                fiados = sum(
+                    (m.monto for m in movimientos if m.tipo == Movimiento.FIADO), Decimal('0')
+                )
+                pagos = sum(
+                    (m.monto for m in movimientos if m.tipo == Movimiento.PAGO), Decimal('0')
+                )
+                saldo = fiados - pagos
+                if monto > saldo:
+                    raise serializers.ValidationError(
+                        {'monto': f'El pago no puede ser mayor al saldo pendiente ({saldo}).'}
+                    )
         return attrs
 
     def validate_cliente(self, cliente):
