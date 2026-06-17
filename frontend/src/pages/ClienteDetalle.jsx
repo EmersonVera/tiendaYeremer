@@ -38,6 +38,18 @@ export default function ClienteDetalle() {
   const saldo = Number(cliente.saldo);
   const conDeuda = saldo > 0;
 
+  async function handleEliminar() {
+    if (!window.confirm(`¿Seguro que quieres eliminar a ${cliente.nombre}? Esto borra también su historial de movimientos.`)) {
+      return;
+    }
+    try {
+      await client.delete(`/clientes/${id}/`);
+      navigate('/');
+    } catch {
+      setError('No se pudo eliminar el cliente.');
+    }
+  }
+
   return (
     <>
       <header className="flex items-center gap-2 w-full px-container-margin py-sm sticky top-0 z-40 bg-surface border-b border-outline-variant md:hidden">
@@ -53,9 +65,26 @@ export default function ClienteDetalle() {
       </header>
 
       <section className="p-container-margin pt-lg md:pt-xl">
-        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col md:flex-row md:items-center justify-between gap-md relative overflow-hidden">
+        <div className="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col gap-md relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pointer-events-none paper-texture"></div>
-          <div className="relative z-10 flex items-center gap-lg">
+          <div className="relative z-10 flex justify-end gap-1">
+            <button
+              onClick={() => navigate(`/clientes/${id}/editar`)}
+              className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors"
+              title="Editar cliente"
+            >
+              <span className="material-symbols-outlined text-primary text-[20px]">edit</span>
+            </button>
+            <button
+              onClick={handleEliminar}
+              className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-error-container transition-colors"
+              title="Eliminar cliente"
+            >
+              <span className="material-symbols-outlined text-error text-[20px]">delete</span>
+            </button>
+          </div>
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-md">
+          <div className="flex items-center gap-lg">
             <div className="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
               <span className="material-symbols-outlined scale-150">person</span>
             </div>
@@ -77,7 +106,7 @@ export default function ClienteDetalle() {
               </div>
             </div>
           </div>
-          <div className="md:text-right relative z-10">
+          <div className="md:text-right">
             <p className="text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">
               Saldo Pendiente
             </p>
@@ -93,6 +122,7 @@ export default function ClienteDetalle() {
                 AL DÍA
               </span>
             )}
+          </div>
           </div>
         </div>
       </section>

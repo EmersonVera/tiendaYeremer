@@ -4,6 +4,7 @@ import ProtectedRoute from './auth/ProtectedRoute';
 import Layout from './components/Layout';
 import ClienteDetalle from './pages/ClienteDetalle';
 import ClientesList from './pages/ClientesList';
+import EditarCliente from './pages/EditarCliente';
 import Login from './pages/Login';
 import NuevoCliente from './pages/NuevoCliente';
 import NuevoFiado from './pages/NuevoFiado';
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/" element={<Protegida><ClientesList /></Protegida>} />
           <Route path="/clientes/nuevo" element={<Protegida><NuevoCliente /></Protegida>} />
           <Route path="/clientes/:id" element={<Protegida><ClienteDetalle /></Protegida>} />
+          <Route path="/clientes/:id/editar" element={<Protegida><EditarCliente /></Protegida>} />
           <Route path="/clientes/:id/fiado" element={<Protegida><NuevoFiado /></Protegida>} />
           <Route path="/clientes/:id/pago" element={<Protegida><RegistrarPago /></Protegida>} />
           <Route path="*" element={<Navigate to="/" replace />} />
