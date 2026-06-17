@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalle de Cliente - Libreta de Confianza</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fbf9f5",
+                    "inverse-on-surface": "#f2f0ed",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1c1a",
+                    "surface-tint": "#316289",
+                    "secondary-container": "#b6edc2",
+                    "primary": "#074469",
+                    "on-secondary-fixed": "#00210e",
+                    "primary-fixed-dim": "#9ccbf7",
+                    "surface-bright": "#fbf9f5",
+                    "on-tertiary-fixed": "#410004",
+                    "on-primary-fixed": "#001d32",
+                    "outline": "#72787f",
+                    "on-background": "#1b1c1a",
+                    "secondary-fixed-dim": "#9dd3aa",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-container": "#3b6d4b",
+                    "surface-variant": "#e4e2de",
+                    "on-tertiary-fixed-variant": "#8b191d",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#cde5ff",
+                    "tertiary-container": "#a32c2c",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#b9efc5",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#eae8e4",
+                    "surface-container-low": "#f5f3ef",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-tertiary-container": "#ffbfba",
+                    "surface-container-highest": "#e4e2de",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#a5d4ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#1e5031",
+                    "background": "#fbf9f5",
+                    "tertiary": "#821218",
+                    "surface-dim": "#dbdad6",
+                    "inverse-primary": "#9ccbf7",
+                    "primary-container": "#2a5c82",
+                    "inverse-surface": "#30312e",
+                    "on-primary-fixed-variant": "#124a6f",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#41474e",
+                    "secondary": "#376847",
+                    "surface-container": "#efeeea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "container-margin": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Work Sans"],
+                    "display-md": ["Plus Jakarta Sans"],
+                    "display-md-mobile": ["Plus Jakarta Sans"],
+                    "amount-lg": ["Work Sans"],
+                    "body-lg": ["Work Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Work Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-md-mobile": ["20px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "amount-lg": ["24px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f5;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .paper-texture {
+            background-image: radial-gradient(#E5E0D5 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .transaction-line::before {
+            content: '';
+            position: absolute;
+            left: 23px;
+            top: 48px;
+            bottom: 0;
+            width: 1px;
+            background-color: #E5E0D5;
+        }
+        .transaction-item:last-child .transaction-line::before {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .mobile-bottom-nav-active {
+                background-color: #b6edc2;
+                color: #3b6d4b;
+                border-radius: 9999px;
+                padding: 4px 16px;
+            }
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Top AppBar (Mobile View) -->
+<header class="flex justify-between items-center w-full px-container-margin py-sm sticky top-0 z-50 bg-surface border-b border-outline-variant md:hidden">
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-display-md-mobile text-display-md-mobile text-primary tracking-tight">Detalle Cliente</h1>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+<span class="material-symbols-outlined text-primary">settings</span>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar (Desktop View) -->
+<aside class="hidden md:flex flex-col h-screen sticky top-0 h-full w-64 border-r border-outline-variant bg-surface-container-lowest">
+<div class="p-lg">
+<h2 class="font-display-md text-display-md text-primary tracking-tight">Libreta Digital</h2>
+<p class="text-on-surface-variant text-label-sm">Tienda de Barrio</p>
+</div>
+<nav class="flex-1 mt-md">
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Panel Principal</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-lg bg-primary-container text-on-primary-container font-bold" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Lista de Clientes</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-body-md">Reportes Diarios</span>
+</a>
+</nav>
+<div class="p-md mt-auto border-t border-outline-variant">
+<a class="flex items-center gap-md px-4 py-3 mx-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Cerrar Sesi\u00f3n</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-[800px] mx-auto pb-32 md:pb-lg">
+<!-- Customer Profile Header Card -->
+<section class="p-container-margin pt-lg md:pt-xl">
+<div class="bg-surface-container-lowest border border-[#E5E0D5] rounded-xl p-lg flex flex-col md:flex-row md:items-center justify-between gap-md relative overflow-hidden">
+<!-- Decor logic: subtle paper pattern -->
+<div class="absolute inset-0 opacity-10 pointer-events-none paper-texture"></div>
+<div class="relative z-10 flex items-center gap-lg">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
+<span class="material-symbols-outlined scale-150">person</span>
+</div>
+<div>
+<h2 class="font-display-md text-display-md text-on-surface">Doña Rosa Pérez</h2>
+<div class="flex flex-col gap-xs mt-xs text-on-surface-variant">
+<span class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">home</span> Casa #12 - Pasaje Los Olivos
+                                </span>
+<span class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">call</span> +56 9 8765 4321
+                                </span>
+</div>
+</div>
+</div>
+<div class="md:text-right relative z-10">
+<p class="text-label-sm text-on-surface-variant uppercase tracking-widest mb-1">Saldo Pendiente</p>
+<p class="font-amount-lg text-display-lg text-tertiary">$14.500</p>
+<span class="inline-flex items-center px-2 py-1 rounded bg-error-container text-on-error-container text-[11px] font-bold mt-2">DEUDA ACTIVA</span>
+</div>
+</div>
+</section>
+<!-- Primary Actions -->
+<section class="px-container-margin grid grid-cols-1 md:grid-cols-2 gap-md mt-md">
+<button class="flex items-center justify-center gap-md bg-primary text-on-primary h-14 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined">receipt_long</span>
+                    Nuevo Fiado
+                </button>
+<button class="flex items-center justify-center gap-md bg-secondary text-on-secondary h-14 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined">payments</span>
+                    Registrar Pago
+                </button>
+</section>
+<!-- Filter Chips (Atmospheric touch) -->
+<section class="px-container-margin mt-lg flex gap-sm overflow-x-auto no-scrollbar py-2">
+<button class="px-4 py-2 bg-surface-container-highest rounded-full text-on-surface font-label-sm border border-outline-variant">Todos</button>
+<button class="px-4 py-2 bg-white rounded-full text-on-surface-variant font-label-sm border border-outline-variant">Fiados</button>
+<button class="px-4 py-2 bg-white rounded-full text-on-surface-variant font-label-sm border border-outline-variant">Abonos</button>
+</section>
+<!-- Movement List (Ledger Style) -->
+<section class="px-container-margin mt-md">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-display-md-mobile text-display-md-mobile text-on-surface">Movimientos Recientes</h3>
+<button class="text-primary text-label-sm font-bold flex items-center gap-xs">
+                        VER TODO <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="space-y-0 relative">
+<!-- Movement Item 1 -->
+<div class="transaction-item relative flex items-start gap-md p-md bg-white border-x border-t border-[#E5E0D5] first:rounded-t-xl hover:bg-surface transition-colors cursor-pointer">
+<div class="transaction-line w-12 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-tertiary">shopping_bag</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-body-lg text-on-surface">Aceite, Arroz y Pan</p>
+<p class="text-label-sm text-on-surface-variant">Hoy • 11:45 AM</p>
+</div>
+<p class="font-amount-lg text-tertiary">+$8.200</p>
+</div>
+</div>
+</div>
+<!-- Movement Item 2 -->
+<div class="transaction-item relative flex items-start gap-md p-md bg-white border-x border-t border-[#E5E0D5] hover:bg-surface transition-colors cursor-pointer">
+<div class="transaction-line w-12 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-on-secondary-container">check_circle</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-body-lg text-on-surface">Abono parcial</p>
+<p class="text-label-sm text-on-surface-variant">Ayer • 06:12 PM</p>
+</div>
+<p class="font-amount-lg text-secondary">-$5.000</p>
+</div>
+</div>
+</div>
+<!-- Movement Item 3 -->
+<div class="transaction-item relative flex items-start gap-md p-md bg-white border border-[#E5E0D5] rounded-b-xl hover:bg-surface transition-colors cursor-pointer">
+<div class="transaction-line w-12 flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-tertiary">fastfood</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-body-lg text-on-surface">Pack Bebidas y Snacks</p>
+<p class="text-label-sm text-on-surface-variant">12 Oct • 10:20 AM</p>
+</div>
+<p class="font-amount-lg text-tertiary">+$11.300</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Scroll Top FAB (Contextual) -->
+<button class="fixed bottom-24 right-container-margin md:bottom-12 md:right-12 w-12 h-12 bg-surface-container-high border border-outline-variant text-primary rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all z-40" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined">expand_less</span>
+</button>
+</main>
+</div>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-xs pb-safe bg-surface border-t border-outline-variant md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Clientes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Deudas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-sm text-label-sm">Perfil</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.96)';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = 'scale(1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+
+        // Hide FAB on scroll down, show on scroll up logic could go here
+        let lastScrollTop = 0;
+        const fab = document.querySelector('button[onclick*="window.scrollTo"]');
+        window.addEventListener("scroll", function(){
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop && st > 200){
+                fab.style.opacity = "1";
+                fab.style.transform = "translateY(0)";
+            } else if (st < 100) {
+                fab.style.opacity = "0";
+                fab.style.transform = "translateY(20px)";
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        }, false);
+    </script>
+</body></html>

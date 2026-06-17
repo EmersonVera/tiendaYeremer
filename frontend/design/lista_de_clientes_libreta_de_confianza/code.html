@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Libreta de Confianza - Clientes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fbf9f5",
+                    "inverse-on-surface": "#f2f0ed",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1c1a",
+                    "surface-tint": "#316289",
+                    "secondary-container": "#b6edc2",
+                    "primary": "#074469",
+                    "on-secondary-fixed": "#00210e",
+                    "primary-fixed-dim": "#9ccbf7",
+                    "surface-bright": "#fbf9f5",
+                    "on-tertiary-fixed": "#410004",
+                    "on-primary-fixed": "#001d32",
+                    "outline": "#72787f",
+                    "on-background": "#1b1c1a",
+                    "secondary-fixed-dim": "#9dd3aa",
+                    "outline-variant": "#E5E0D5",
+                    "on-secondary-container": "#3b6d4b",
+                    "surface-variant": "#e4e2de",
+                    "on-tertiary-fixed-variant": "#8b191d",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#cde5ff",
+                    "tertiary-container": "#a32c2c",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#b9efc5",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#eae8e4",
+                    "surface-container-low": "#f5f3ef",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-tertiary-container": "#ffbfba",
+                    "surface-container-highest": "#e4e2de",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#a5d4ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#1e5031",
+                    "background": "#fbf9f5",
+                    "tertiary": "#821218",
+                    "surface-dim": "#dbdad6",
+                    "inverse-primary": "#9ccbf7",
+                    "primary-container": "#2a5c82",
+                    "inverse-surface": "#30312e",
+                    "on-primary-fixed-variant": "#124a6f",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#41474e",
+                    "secondary": "#376847",
+                    "surface-container": "#efeeea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "container-margin": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Work Sans"],
+                    "display-md": ["Plus Jakarta Sans"],
+                    "display-md-mobile": ["Plus Jakarta Sans"],
+                    "amount-lg": ["Work Sans"],
+                    "body-lg": ["Work Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Work Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-md-mobile": ["20px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "amount-lg": ["24px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-indicator {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .customer-card {
+            border: 1px solid #E5E0D5;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-container-margin py-sm sticky top-0 z-50 bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<h1 class="font-display-md-mobile text-display-md-mobile text-primary tracking-tight md:font-display-md md:text-display-md">Libreta de Confianza</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-md focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all w-64" placeholder="Buscar cliente..." type="text"/>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors active:opacity-80">
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-[800px] mx-auto px-container-margin py-md">
+<!-- Search Bar Mobile -->
+<div class="md:hidden mb-lg relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl text-body-md focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Buscar clientes..." type="text"/>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-2 mb-lg overflow-x-auto scroll-hide pb-2">
+<button class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm whitespace-nowrap">Todos</button>
+<button class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm whitespace-nowrap hover:bg-surface-variant transition-colors">Con Deuda</button>
+<button class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm whitespace-nowrap hover:bg-surface-variant transition-colors">Pagados</button>
+<button class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full font-label-sm text-label-sm whitespace-nowrap hover:bg-surface-variant transition-colors">Nuevos</button>
+</div>
+<!-- Section Title -->
+<div class="flex justify-between items-end mb-md">
+<h2 class="font-display-md text-display-md text-on-surface">Lista de Clientes</h2>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider">12 Clientes</p>
+</div>
+<!-- Client List Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Card 1: Debt -->
+<div class="customer-card bg-surface-container-lowest p-md rounded-xl flex flex-col gap-sm hover:border-primary/30 transition-all cursor-pointer active:scale-95 duration-150">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-on-primary-fixed font-bold text-lg">
+                        M
+                    </div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block mb-1">SALDO PENDIENTE</span>
+<span class="font-amount-lg text-amount-lg text-tertiary">$45.50</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">María Rodríguez</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="text-body-md font-body-md">Casa #24</span>
+</div>
+</div>
+</div>
+<!-- Card 2: No Debt -->
+<div class="customer-card bg-surface-container-lowest p-md rounded-xl flex flex-col gap-sm hover:border-primary/30 transition-all cursor-pointer active:scale-95 duration-150">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-secondary-fixed rounded-full flex items-center justify-center text-on-secondary-fixed font-bold text-lg">
+                        J
+                    </div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block mb-1">SALDO PENDIENTE</span>
+<span class="font-amount-lg text-amount-lg text-secondary">$0.00</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">Juan Carlos Pérez</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="text-body-md font-body-md">Casa #12</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Debt -->
+<div class="customer-card bg-surface-container-lowest p-md rounded-xl flex flex-col gap-sm hover:border-primary/30 transition-all cursor-pointer active:scale-95 duration-150">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-tertiary-fixed rounded-full flex items-center justify-center text-on-tertiary-fixed font-bold text-lg">
+                        E
+                    </div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block mb-1">SALDO PENDIENTE</span>
+<span class="font-amount-lg text-amount-lg text-tertiary">$120.00</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">Elena Gómez</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="text-body-md font-body-md">Casa #45</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Small Debt -->
+<div class="customer-card bg-surface-container-lowest p-md rounded-xl flex flex-col gap-sm hover:border-primary/30 transition-all cursor-pointer active:scale-95 duration-150">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-on-primary-fixed font-bold text-lg">
+                        R
+                    </div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block mb-1">SALDO PENDIENTE</span>
+<span class="font-amount-lg text-amount-lg text-tertiary">$5.25</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">Roberto Sánchez</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="text-body-md font-body-md">Sin asignar</span>
+</div>
+</div>
+</div>
+<!-- Card 5: Debt -->
+<div class="customer-card bg-surface-container-lowest p-md rounded-xl flex flex-col gap-sm hover:border-primary/30 transition-all cursor-pointer active:scale-95 duration-150">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-secondary-fixed-dim rounded-full flex items-center justify-center text-on-secondary-fixed-variant font-bold text-lg">
+                        L
+                    </div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block mb-1">SALDO PENDIENTE</span>
+<span class="font-amount-lg text-amount-lg text-tertiary">$18.90</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">Lucía Méndez</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="text-body-md font-body-md">Casa #08</span>
+</div>
+</div>
+</div>
+<!-- Card 6: No Debt -->
+<div class="customer-card bg-surface-container-lowest p-md rounded-xl flex flex-col gap-sm hover:border-primary/30 transition-all cursor-pointer active:scale-95 duration-150">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 bg-primary-fixed-dim rounded-full flex items-center justify-center text-on-primary-fixed-variant font-bold text-lg">
+                        P
+                    </div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-outline block mb-1">SALDO PENDIENTE</span>
+<span class="font-amount-lg text-amount-lg text-secondary">$0.00</span>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface font-bold">Pedro Almodóvar</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-1">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span class="text-body-md font-body-md">Casa #102</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB: Nuevo Cliente -->
+<button class="fixed right-6 bottom-24 z-50 w-14 h-14 bg-primary text-on-primary rounded-xl shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all md:bottom-10">
+<span class="material-symbols-outlined text-[32px]">person_add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-xs pb-safe bg-surface border-t border-outline-variant bg-surface-container-low shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm mt-1">Clientes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-1">Deudas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-sm text-label-sm mt-1">Perfil</span>
+</a>
+</nav>
+<script>
+        // Simple touch interaction for cards
+        document.querySelectorAll('.customer-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Future interaction: Navigate to customer details
+                console.log('Viewing customer details');
+            });
+        });
+    </script>
+</body></html>

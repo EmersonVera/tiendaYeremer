@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Libreta de Confianza - Iniciar Sesión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fbf9f5",
+                    "inverse-on-surface": "#f2f0ed",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1c1a",
+                    "surface-tint": "#316289",
+                    "secondary-container": "#b6edc2",
+                    "primary": "#074469",
+                    "on-secondary-fixed": "#00210e",
+                    "primary-fixed-dim": "#9ccbf7",
+                    "surface-bright": "#fbf9f5",
+                    "on-tertiary-fixed": "#410004",
+                    "on-primary-fixed": "#001d32",
+                    "outline": "#72787f",
+                    "on-background": "#1b1c1a",
+                    "secondary-fixed-dim": "#9dd3aa",
+                    "outline-variant": "#c1c7cf",
+                    "on-secondary-container": "#3b6d4b",
+                    "surface-variant": "#e4e2de",
+                    "on-tertiary-fixed-variant": "#8b191d",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#cde5ff",
+                    "tertiary-container": "#a32c2c",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#b9efc5",
+                    "tertiary-fixed-dim": "#ffb3ae",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#eae8e4",
+                    "surface-container-low": "#f5f3ef",
+                    "tertiary-fixed": "#ffdad7",
+                    "on-tertiary-container": "#ffbfba",
+                    "surface-container-highest": "#e4e2de",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#a5d4ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#1e5031",
+                    "background": "#fbf9f5",
+                    "tertiary": "#821218",
+                    "surface-dim": "#dbdad6",
+                    "inverse-primary": "#9ccbf7",
+                    "primary-container": "#2a5c82",
+                    "inverse-surface": "#30312e",
+                    "on-primary-fixed-variant": "#124a6f",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#41474e",
+                    "secondary": "#376847",
+                    "surface-container": "#efeeea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "container-margin": "16px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Work Sans"],
+                    "display-md": ["Plus Jakarta Sans"],
+                    "display-md-mobile": ["Plus Jakarta Sans"],
+                    "amount-lg": ["Work Sans"],
+                    "body-lg": ["Work Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Work Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-md-mobile": ["20px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "amount-lg": ["24px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f5;
+            color: #1b1c1a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .paper-texture {
+            background-color: #fbf9f5;
+            background-image: radial-gradient(#E5E0D5 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .login-card {
+            border: 1px solid #E5E0D5;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #074469;
+            box-shadow: 0 0 0 2px rgba(7, 68, 105, 0.1);
+        }
+
+        .btn-active-state:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body class="paper-texture min-h-screen flex flex-col items-center justify-center font-body-md text-body-md px-gutter">
+<!-- Top Branding Section -->
+<div class="mb-xl text-center flex flex-col items-center">
+<div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-white text-[32px]" data-icon="menu_book">menu_book</span>
+</div>
+<h1 class="font-display-md-mobile text-display-md-mobile md:font-display-md md:text-display-md text-primary tracking-tight">
+            Libreta de Confianza
+        </h1>
+<p class="text-on-surface-variant font-body-md mt-xs opacity-80">
+            Tu negocio, bajo control.
+        </p>
+</div>
+<!-- Login Card -->
+<main class="w-full max-w-[400px] bg-surface-container-lowest login-card rounded-xl p-lg flex flex-col gap-lg">
+<div class="space-y-sm">
+<h2 class="font-display-md-mobile text-display-md-mobile text-on-surface">Iniciar Sesión</h2>
+<p class="font-body-md text-on-surface-variant text-sm">Ingresa tus credenciales para acceder a tu libreta digital.</p>
+</div>
+<form action="#" class="flex flex-col gap-md" onsubmit="return false;">
+<!-- Username Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider ml-1" for="username">
+                    Usuario
+                </label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="person">person</span>
+<input autocomplete="username" class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-md pl-11 pr-md font-body-md transition-all" id="username" placeholder="Nombre de usuario" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider ml-1" for="password">
+                    Contraseña
+                </label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="lock">lock</span>
+<input autocomplete="current-password" class="w-full bg-surface-container-low border border-outline-variant rounded-lg py-md pl-11 pr-md font-body-md transition-all" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="mt-md w-full bg-primary text-on-primary font-body-lg text-body-lg py-md rounded-lg flex items-center justify-center gap-sm btn-active-state transition-all shadow-sm hover:shadow-md" type="submit">
+                Entrar
+                <span class="material-symbols-outlined" data-icon="login">login</span>
+</button>
+</form>
+</main>
+<!-- Footer Decorative / Minimal -->
+<footer class="mt-xl text-center">
+<div class="flex items-center gap-base justify-center opacity-40">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">Conexión segura y encriptada</span>
+</div>
+</footer>
+<!-- Background Atmospheric Effect -->
+<div class="fixed bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-surface-container-low to-transparent -z-10 pointer-events-none opacity-50"></div>
+<script>
+        // Simple Interaction logic
+        const togglePassword = document.querySelector('button[type="button"]');
+        const passwordInput = document.querySelector('#password');
+        
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePassword.querySelector('span').textContent = type === 'password' ? 'visibility' : 'visibility_off';
+        });
+
+        // Add a subtle tactile feedback for button
+        const loginBtn = document.querySelector('button[type="submit"]');
+        loginBtn.addEventListener('click', () => {
+            loginBtn.innerHTML = '<span class="animate-spin material-symbols-outlined" data-icon="progress_activity">progress_activity</span>';
+            setTimeout(() => {
+                loginBtn.innerHTML = 'Accediendo...';
+                loginBtn.classList.add('opacity-80');
+            }, 600);
+        });
+    </script>
+</body></html>
